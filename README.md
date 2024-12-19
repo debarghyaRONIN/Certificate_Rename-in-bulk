@@ -1,101 +1,38 @@
 # Certificate_Rename-in-bulk
 
+This script generates personalized certificates for participants using a predefined template. The script reads participant names from a CSV file and places them on the certificate template, outputting individual certificate images.
 
-This script generates certificates with participant names by overlaying text on a certificate template image. The script reads participant names from a CSV file and creates personalized certificates for each participant.
+## Requirements
 
-Features
+- Python 3.x
+- `Pillow` library for image manipulation (Install via `pip install Pillow`).
+- A CSV file containing participant names.
+- A certificate template image (`.jpeg`, `.png`, etc.) with a placeholder for the participant's name.
+- A font file (e.g., `.ttf`) for the text on the certificate.
 
-Generates certificates from a pre-defined template.
+## Files
 
-Uses customizable font settings (font type, size, and color).
+- **`certificate_generator.py`**: The Python script to generate the certificates.
+- **`names.csv`**: A CSV file containing a list of participants' full names.
+- **`template.jpeg`**: A certificate template image with a placeholder for the participant's name.
+- **`ProductSans-Medium.ttf`**: The font file used for rendering text (modify the path in the script if necessary).
+- **`output/`**: The folder where generated certificates will be saved.
 
-Supports batch processing of participant names from a CSV file.
+## Setup
 
-Automatically saves certificates as PNG files in a specified output folder.
+1. Place the `certificate_generator.py`, `names.csv`, and the certificate template image in the same directory.
+2. Make sure to update the `FONT_PATH` and `CERTIFICATE_TEMPLATE` variables in the script:
+   - **`FONT_PATH`**: The path to your `.ttf` font file.
+   - **`CERTIFICATE_TEMPLATE`**: The file name or path to your certificate template image.
+3. Modify the `CSV_FILE` variable to point to your `names.csv` file.
 
-Requirements
+## CSV Format
 
-Prerequisites
+The `names.csv` file should have the following format:
 
-Ensure the following are installed on your system:
-
-Python 3.6+
-
-Pillow (PIL) library
-
-Installation
-
-Install Python dependencies:
-
-pip install pillow
-
-Configuration
-
-The script uses the following configuration variables:
-
-CSV_FILE: The path to the CSV file containing participant names. Default: names.csv
-
-CERTIFICATE_TEMPLATE: The path to the certificate template image (JPEG format). Default: template.jpeg
-
-OUTPUT_FOLDER: The folder where generated certificates will be saved. Default: output
-
-FONT_PATH: Path to the .ttf font file used for text. Replace with the path to your font file. Default: ./ProductSans-Medium.ttf
-
-FONT_SIZE: Font size for the participant names. Default: 50
-
-TEXT_COLOR: Text color for the participant names. Default: black
-
-Usage
-
-Prepare the Input CSV File:
-The CSV file should include a column titled Full Name, containing the names of the participants. Example:
-
+```csv
 Full Name
 John Doe
 Jane Smith
-Alice Johnson
+...
 
-Prepare the Certificate Template:
-Create a certificate template image (JPEG format) with an empty space for the participant name.
-
-Run the Script:
-Execute the script by running:
-
-python script_name.py
-
-View Generated Certificates:
-Generated certificates will be saved in the output folder. The filenames will follow the format: ParticipantName_certificate.png.
-
-Script Overview
-
-Main Functionality
-
-Opens the certificate template image.
-
-Loads the participant name from the CSV file.
-
-Centers the participant name on the template.
-
-Saves the personalized certificate to the output folder.
-
-Error Handling
-
-The script includes error handling for issues such as missing font files or invalid CSV inputs. Any errors encountered during the certificate generation process are logged to the console.
-
-Troubleshooting
-
-Font Not Found: Ensure the FONT_PATH is set to the correct path of your .ttf font file.
-
-Template File Missing: Verify the path to the CERTIFICATE_TEMPLATE image.
-
-Invalid CSV File: Ensure the input CSV file contains a Full Name column and is formatted correctly.
-
-Example Output
-
-The generated certificates will be in PNG format and include the participant's name positioned in the designated space on the template. Example file name:
-
-John_Doe_certificate.png
-
-License
-
-This script is free to use and modify for personal or educational purposes.
